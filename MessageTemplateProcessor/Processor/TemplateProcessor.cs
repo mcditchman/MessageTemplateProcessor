@@ -30,7 +30,7 @@ namespace MessageTemplateProcessor.Processor
         }
 
         /// <summary>
-        /// Process message template calling provided delegate for each token found to be used for 
+        /// Process message template calling provided delegate for each token found
         /// </summary>
         /// <param name="message">Message template</param>
         /// <param name="tokenProcessor">Delegate function that is called for each token match to be used for matching</param>
