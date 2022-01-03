@@ -9,6 +9,34 @@ namespace MessageTemplateProcessor.Tests
     public class ProcessTemplateTests
     {
         [Fact]
+        public void EmptyDictTest()
+        {
+            var dict = new Dictionary<string, string>();
+
+            var res = TextTemplates.ShortText.ProcessTemplate((x) =>
+            {
+                return dict.TryGetValue(x, out var value) ? value : string.Empty;
+            });
+
+            Assert.Equal("The quick lazy fox  through the gate  reached the house", res);
+        }
+        [Fact]
+        public void EmptyStringTest()
+        {
+            var dict = new Dictionary<string, string>()
+            {
+                { "token1", "Cole" },
+                { "token2", "Ditchman" }
+            };
+
+            var res = string.Empty.ProcessTemplate((x) =>
+            {
+                return dict.TryGetValue(x, out var value) ? value : string.Empty;
+            });
+
+            Assert.Equal(string.Empty, res);
+        }
+        [Fact]
         public void SmallInputTest()
         {
             var dict = new Dictionary<string, string>()
